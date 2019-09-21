@@ -1,0 +1,23 @@
+import tensorflow as tf
+
+sess = tf.InteractiveSession()
+
+I_matrix = tf.eye(5)
+print(I_matrix.eval())
+
+X = tf.Variable(tf.eye(10))
+X.initializer.run()
+print(X.eval())
+
+A = tf.Variable(tf.random_normal([5,10]))
+A.initializer.run()
+print(A.eval())
+
+product = tf.matmul(A,X)
+print(product.eval())
+
+
+b = tf.Variable(tf.random_uniform([5,10],0,2,dtype=tf.int32))
+b.initializer.run()
+print(b.eval())
+b_new = tf.cast(b,dtype=tf.float32)

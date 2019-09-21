@@ -1,0 +1,33 @@
+import tensorflow as tf
+
+sess = tf.Session()
+
+a = tf.zeros([2,3],tf.int32)
+b = tf.ones([3,3],tf.int32)
+print(sess.run(a))
+print(sess.run(b))
+
+#等差排佈,2到5分成4份
+range_t = tf.linspace(2.0,5.0,4)
+
+rang = tf.range(10)
+
+
+#变量
+rand_t = tf.random_uniform([50,50],0,10,seed=0)
+t_a = tf.Variable(rand_t)
+t_b = tf.Variable(rand_t)
+
+#保存变量
+saver = tf.train.Saver()
+
+
+#占位符
+x = tf.placeholder("float")
+y = 2*x
+data = tf.random_uniform([4,5],10)
+with tf.Session() as sess:
+    x_data = sess.run(data)
+    print(sess.run(y,feed_dict={x:x_data}))
+
+sess.close()
